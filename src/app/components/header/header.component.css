@@ -1,0 +1,14 @@
+.header{
+    height: 60px;
+    align-items: center;
+    display: block;
+    background-color: #1976d2;
+    /* background-color: #ff5d5d; */
+    color: white;
+    font-weight: 600;
+    width: 100%;
+  }
+
+  .angular-logo:hover{
+    cursor: pointer;
+  }

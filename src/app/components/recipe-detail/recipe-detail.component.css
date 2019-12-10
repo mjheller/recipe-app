@@ -1,0 +1,48 @@
+/* .container-outer{
+
+} */
+
+.summary{
+    width: calc(100% - 305px);
+    min-width: 500px;
+    max-width: 1024px;
+    height: 100%;
+    border-right: 1px solid rgba(0,0,0,.12);;
+    box-sizing: border-box;
+}
+.edit-icon{
+    zoom: 1.6;
+}
+.edit-icon:hover{
+    cursor: pointer;
+}
+
+.info{
+    margin-right: 10px;
+    display: inline;
+}
+.time-facts{
+    margin-left: 5px;
+}
+
+.recipe-image{
+    margin-top: 15px;
+    margin-bottom:15px;
+}
+
+.recipe-image{
+    width: 100%;
+}
+
+.ingredient-item{
+    margin-left: 5px;
+    list-style-type:none;
+}
+
+.directions-item{
+    list-style-type:none;
+}
+.special{
+    margin-left:50px;
+    /* list-style-type: circle; */
+}

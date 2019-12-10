@@ -1,0 +1,8 @@
+.recipes-list{
+    float: left;
+}
+
+.add-recipe{
+    display: inline;
+    background-color: lightgreen;
+}

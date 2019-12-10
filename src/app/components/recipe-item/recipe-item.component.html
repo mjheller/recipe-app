@@ -1,0 +1,14 @@
+<mat-card *ngIf="recipe" class="recipe-card" routerLink="recipe-detail/recipe.uuid}}" (click)="openRecipeDetails($event,recipe)" >
+    <img mat-card-image src="{{imgUrl}}" class="recipe-image" alt="{{recipe.description}}">
+    <mat-card-title> {{ recipe.title }}</mat-card-title>
+    <mat-card-subtitle>{{ recipe.description }}</mat-card-subtitle>
+    
+    <!-- <mat-card-content>Servings: {{recipe.servings}}</mat-card-content>
+    <mat-card-content>Preptime: {{recipe.prepTime}}</mat-card-content>
+    <mat-card-content>CookTime: {{recipe.cookTime}}</mat-card-content>
+    <mat-card-content>Posted: {{recipe.postDate}}</mat-card-content>
+    <mat-card-content>Edited: {{recipe.editDate}}</mat-card-content> -->
+
+
+   
+</mat-card>

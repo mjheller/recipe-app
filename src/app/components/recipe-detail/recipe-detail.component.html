@@ -1,0 +1,45 @@
+<!-- <div class="recipe-detail"></div> -->
+<div class="container-outer">
+        <div class="summary" *ngIf="selectedRecipe" (mouseenter)="isHovering=true" (mouseleave)="isHovering=false">
+        <mat-icon class="edit-icon pull-right" [hidden]="!isHovering">create</mat-icon>
+        <h3> {{ selectedRecipe.title }}</h3>
+        <h4>{{ selectedRecipe.description }}</h4>
+        <p class="info"><strong>Posted </strong>{{selectedRecipe.postDate | date:"short"}}</p>
+        <p class="info"><strong>Last Edited</strong> {{selectedRecipe.editDate | date:"short"}} </p>
+        <img  src="{{imgUrl}}" class="recipe-image" alt="{{selectedRecipe.description}}">
+        <div class="ingredients">
+            <h4 class="headline">Ingredients</h4>
+            <span class="recipe-facts">
+                {{selectedRecipe.servings}} servings 
+                <mat-icon>pie_chart</mat-icon>
+              
+            </span> 
+            <span>  Ready In {{selectedRecipe.prepTime + selectedRecipe.cookTime}} m</span>
+            <mat-divider></mat-divider>
+            <ul >
+                <li *ngFor="let ingredient of selectedRecipe.ingredients"class="ingredient-item">
+                    <mat-icon>add_circle_outline</mat-icon>
+                    {{ingredient.amount}} 
+                    <span *ngIf="ingredient.measurement">{{ingredient.measurement}} of </span>
+                     {{ingredient.name}} 
+                     <div *ngIf="ingredient.title && ingredient.type && ingredient.text">
+                         <p class="special">Special: {{ingredient.title}} {{ingredient.type}} {{ingredient.text  | striphtml}}</p>
+                     </div>
+                </li>
+            </ul>
+        </div>
+        <div class="directions">
+                <h4 class="headline">Directions</h4>
+                <div class="time-details" >
+                    <mat-icon>access_time</mat-icon>
+                    <span class="time-facts">Prep {{selectedRecipe.prepTime}} m | </span>
+                    <span class="time-facts">Cook {{selectedRecipe.cookTime}} m | </span>
+                    <span class="time-facts">Ready In {{selectedRecipe.prepTime + selectedRecipe.cookTime}} m </span>
+                </div>
+                <mat-divider></mat-divider>
+                <ul *ngFor="let direction of selectedRecipe.directions; let i = index">
+                    <li class="directions-item">{{i+1}}.  <span *ngIf="direction.optional"><strong>Optional: </strong></span>{{direction.instructions}} </li>
+                </ul>
+        </div>
+    </div>
+</div>

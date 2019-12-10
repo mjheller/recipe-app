@@ -1,0 +1,27 @@
+<h2>Add Your Recipe</h2>
+<div class="container">
+    <form>
+        <mat-form-field class="titleField">
+            <input matInput placeholder="Add a title">
+        </mat-form-field>
+        
+        <mat-form-field  class="descriptionField">
+            <textarea matInput placeholder="Description"></textarea>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-select placeholder="Select servings size">
+                <mat-option *ngFor="let num of servingsNumbers" value="num">
+                    {{num}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-label>Preptime (minutes)</mat-label>
+        <mat-slider thumbLabel min="1" max="300" step="1" #prepTime></mat-slider>
+
+        <mat-label>Cooktime (minutes)</mat-label>
+        <mat-slider thumbLabel min="1" max="300" step="1" #cookTime></mat-slider>
+    </form>
+</div>
+      

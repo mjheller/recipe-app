@@ -1,0 +1,5 @@
+<h2>Recipes</h2>
+<div> <button routerLink="recipe-create" class="add-recipe" mat-button>Add Recipe +</button> </div>
+<div class="recipes-list" *ngFor="let recipe of recipesList | async">
+    <recipe-item [recipe]="recipe"></recipe-item>
+</div>
