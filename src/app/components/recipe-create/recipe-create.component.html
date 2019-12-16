@@ -1,27 +1,57 @@
-<h2>Add Your Recipe</h2>
 <div class="container">
-    <form>
+    <form [formGroup]="recipeForm" novalidate (ngSubmit)="finalizeRecipe()">
+        <h2>Add Your Recipe</h2>
         <mat-form-field class="titleField">
-            <input matInput placeholder="Add a title">
+            <mat-label>Title:</mat-label>
+            <input matInput type="text" formControlName="title"> 
         </mat-form-field>
-        
-        <mat-form-field  class="descriptionField">
-            <textarea matInput placeholder="Description"></textarea>
+        <mat-form-field class="titleField">
+            <mat-label>Description</mat-label>
+            <input matInput type="text" formControlName="description">
         </mat-form-field>
-        
         <mat-form-field>
-            <mat-select placeholder="Select servings size">
-                <mat-option *ngFor="let num of servingsNumbers" value="num">
+            <mat-select placeholder="Select servings size" formControlName="servings">
+                <mat-option *ngFor="let num of servingsNumbers" [value]="num" >
                     {{num}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
 
+        
         <mat-label>Preptime (minutes)</mat-label>
-        <mat-slider thumbLabel min="1" max="300" step="1" #prepTime></mat-slider>
-
+        <mat-slider thumbLabel min="1" max="300" step="1" #prepTime formControlName="prepTime"></mat-slider>
+        
         <mat-label>Cooktime (minutes)</mat-label>
-        <mat-slider thumbLabel min="1" max="300" step="1" #cookTime></mat-slider>
+        <mat-slider thumbLabel min="1" max="300" step="1" #cookTime formControlName="cookTime"></mat-slider>
+
+        <fieldset>
+            <div class="input-group"  >
+                <input matInput formArrayName="ingredients" type="text" class="form-control" placeholder="Enter ingredients" id="ingredientForm" #ingredient/>
+                <button class="btn btn-primary add-button" type="button" (click)="addIngredient(ingredient)">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+            <ul>
+                <li *ngFor="let ing of ingredientsArray; let i = index">
+                    {{ing}} 
+                    <mat-icon class="remove-ingredient-icon" (click)="removeIngredient(i)">close</mat-icon>
+                </li>
+            </ul>
+        </fieldset>
+            
+        <fieldset>
+            <div class="input-group">
+                <input matInput type="text" formArrayName="directions" class="form-control" placeholder="Enter directions" id="directionsForm" #direction/>
+                <button class="btn btn-primary add-button" type="button" (click)="addDirection(direction)">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+            <ol>
+                <li *ngFor="let d of directionsArray">{{d}}</li>
+            </ol>
+        </fieldset> 
+
+        <button type="submit" class="btn btn-primary finalize-button" [disabled]="!recipeForm.valid">Submit Recipe</button>
     </form>
 </div>
       

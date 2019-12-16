@@ -21,6 +21,10 @@ export class RecipesService {
     recipes.map(r => this.recipeMap.set(r.uuid, r))
   }
 
+  addNewRecipeToDB(recipe: IRecipe){
+    return this.http.post<IRecipe>(`${apiURL}/recipes`, {...recipe});
+  }
+
   getCachedRecipe(id){
     return this.recipeMap.get(id);
   }

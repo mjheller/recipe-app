@@ -25,7 +25,10 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   
   initData(recipe){
     this.selectedRecipe = this.recipes.mergeSpecials(recipe);
-    this.imgUrl = `${apiURL + this.selectedRecipe.images.full}`;
+    if(this.selectedRecipe && this.selectedRecipe.images){
+      this.imgUrl = `${apiURL + this.selectedRecipe.images.full}`;
+    }
+    
   }
   ngOnInit() {
     this.subscription = this.recipes.getSpecials().subscribe(data => {

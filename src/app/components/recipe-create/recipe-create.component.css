@@ -14,3 +14,15 @@
   mat-form-field{
       margin: 5px;
   }
+
+  .remove-ingredient-icon{
+    color: red;
+    cursor: pointer;
+  }
+
+  
+
+  button.add-button{
+    display:inline;
+    padding:3px;
+  }

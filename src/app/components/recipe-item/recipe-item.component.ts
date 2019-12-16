@@ -15,7 +15,10 @@ export class RecipeItemComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.imgUrl = `${apiURL + this.recipe.images.small}`;
+    if(this.recipe.images){
+      this.imgUrl = `${apiURL + this.recipe.images.small}`;
+    }
+    
   }
   openRecipeDetails(event, r){
     //console.log(event, r)

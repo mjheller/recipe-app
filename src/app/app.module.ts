@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +24,8 @@ import {MatSliderModule} from '@angular/material/slider';
 
 
 import { StripHtmlPipe } from './pipes/strip-html.pipe';
-import { RecipeCreateComponent } from './components/recipe-create/recipe-create.component'
+import { RecipeCreateComponent } from './components/recipe-create/recipe-create.component';
+import { RecipeEditComponent } from './components/recipe-edit/recipe-edit.component'
 
 
 
@@ -36,12 +38,14 @@ import { RecipeCreateComponent } from './components/recipe-create/recipe-create.
     RecipeDetailComponent,
     HeaderComponent,
     StripHtmlPipe,
-    RecipeCreateComponent
+    RecipeCreateComponent,
+    RecipeEditComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    ReactiveFormsModule, FormsModule,
     NoopAnimationsModule,
     MatCardModule, MatToolbarModule, MatDividerModule, MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatSliderModule,
   ],

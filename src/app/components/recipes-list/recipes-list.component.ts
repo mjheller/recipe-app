@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./recipes-list.component.css']
 })
 export class RecipesListComponent implements OnInit {
-  private recipesList;
+  private recipesList: any//IRecipe;
   constructor(private recipesService: RecipesService) { }
 
   ngOnInit() {
