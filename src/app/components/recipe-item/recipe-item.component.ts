@@ -10,7 +10,7 @@ import {apiURL} from '../../constants/constants';
 })
 export class RecipeItemComponent implements OnInit {
   @Input('recipe') recipe: IRecipe;
-  private imgUrl: string;
+  imgUrl: string;
   
   constructor(private router: Router) { }
 

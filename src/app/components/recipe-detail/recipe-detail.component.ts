@@ -12,10 +12,11 @@ import { SubscriptionLike } from "rxjs";
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit, OnDestroy {
-  private selectedRecipe: IRecipe;
-  private selectedID: string;
-  private imgUrl: string;
-  private subscription: SubscriptionLike;
+  selectedRecipe: IRecipe;
+  selectedID: string;
+  imgUrl: string;
+  subscription: SubscriptionLike;
+  isHovering: boolean;
 
   constructor(private recipes: RecipesService, private route: ActivatedRoute) {
       this.route.params.subscribe( params => {

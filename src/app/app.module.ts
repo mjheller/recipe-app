@@ -25,7 +25,7 @@ import {MatSliderModule} from '@angular/material/slider';
 
 import { StripHtmlPipe } from './pipes/strip-html.pipe';
 import { RecipeCreateComponent } from './components/recipe-create/recipe-create.component';
-import { RecipeEditComponent } from './components/recipe-edit/recipe-edit.component'
+// import { RecipeEditComponent } from './components/recipe-edit/recipe-edit.component'
 
 
 
@@ -39,7 +39,7 @@ import { RecipeEditComponent } from './components/recipe-edit/recipe-edit.compon
     HeaderComponent,
     StripHtmlPipe,
     RecipeCreateComponent,
-    RecipeEditComponent
+    // RecipeEditComponent
   ],
   imports: [
     BrowserModule,

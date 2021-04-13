@@ -15,8 +15,8 @@ export class RecipeCreateComponent implements OnInit {
   ingredientsArray: string[];
   directionsArray: IDirection[];
 
-  @ViewChild('ingredient',  {static: false}) ingredientRef: ElementRef;
-  @ViewChild('direction',  {static: false}) directionRef: ElementRef;
+  @ViewChild('ingredient') ingredientRef: ElementRef;
+  @ViewChild('direction') directionRef: ElementRef;
   constructor(private formBuilder: FormBuilder, private recipeService: RecipesService) {}
 
   
