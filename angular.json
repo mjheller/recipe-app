@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "recipe-app"
+    }
+  },
+  "defaultProject": "recipe-app",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

@@ -1,4 +1,4 @@
-<mat-card *ngIf="recipe" class="recipe-card" routerLink="recipe-detail/recipe.uuid}}" (click)="openRecipeDetails($event,recipe)" >
+<mat-card *ngIf="recipe" class="recipe-card" routerLink="recipe-detail/{{recipe.uuid}}" (click)="openRecipeDetails($event,recipe)" >
     <img mat-card-image src="{{imgUrl}}" class="recipe-image" alt="{{recipe.description}}">
     <mat-card-title> {{ recipe.title }}</mat-card-title>
     <mat-card-subtitle>{{ recipe.description }}</mat-card-subtitle>

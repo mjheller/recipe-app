@@ -10,24 +10,23 @@ import { RecipeItemComponent } from './components/recipe-item/recipe-item.compon
 import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
-
-import {MatCardModule} from '@angular/material/card';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {MatSliderModule} from '@angular/material/slider';
+import { SharedModule } from './shared/shared.module';
 
 
 import { StripHtmlPipe } from './pipes/strip-html.pipe';
 import { RecipeCreateComponent } from './components/recipe-create/recipe-create.component';
-// import { RecipeEditComponent } from './components/recipe-edit/recipe-edit.component'
+import { StoreModule } from '@ngrx/store';
+import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
+
+import {effects, rootReducer} from './store'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+
 
 import 'hammerjs';
+
+import { reducer } from './store/recipes/recipes.reducer';
 
 
 @NgModule({
@@ -45,9 +44,15 @@ import 'hammerjs';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    SharedModule,
     ReactiveFormsModule, FormsModule,
     NoopAnimationsModule,
-    MatCardModule, MatToolbarModule, MatDividerModule, MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatSliderModule,
+
+    EffectsModule.forRoot(effects),
+    StoreModule.forRoot({recipes: reducer, router: routerReducer}),
+    StoreRouterConnectingModule.forRoot(),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

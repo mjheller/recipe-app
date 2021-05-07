@@ -1,6 +1,6 @@
 <!-- <div class="recipe-detail"></div> -->
 <div class="container-outer">
-        <div class="summary" *ngIf="selectedRecipe" (mouseenter)="isHovering=true" (mouseleave)="isHovering=false">
+        <div class="summary" *ngIf="selectedRecipe$ | async as selectedRecipe" (mouseenter)="isHovering=true" (mouseleave)="isHovering=false">
         <mat-icon class="edit-icon pull-right" [hidden]="!isHovering">create</mat-icon>
         <h3> {{ selectedRecipe.title }}</h3>
         <h4>{{ selectedRecipe.description }}</h4>

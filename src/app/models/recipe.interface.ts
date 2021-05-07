@@ -1,6 +1,7 @@
 import {IIngredient} from "./ingredient.interface";
 import {IDirection} from "./direction.interface";
-export interface IRecipe{
+export interface Recipe{
+    id?: string,
     uuid: string,
     title: string,
     description: string,

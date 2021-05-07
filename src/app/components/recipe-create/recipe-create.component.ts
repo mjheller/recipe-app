@@ -3,6 +3,14 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { RecipesService } from 'src/app/services/recipes.service';
 import {IDirection} from 'src/app/models/direction.interface';
 import * as uuid from 'uuid';
+import { Store } from '@ngrx/store';
+import { createRecipe } from 'src/app/store/recipes/recipes.actions';
+import { Recipe } from 'src/app/models/recipe.interface';
+import { Subscription } from 'rxjs';
+import * as recipeActions from "../../store/recipes/recipes.actions"
+
+import { Actions, ofType } from '@ngrx/effects';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-create',
@@ -11,13 +19,18 @@ import * as uuid from 'uuid';
 })
 export class RecipeCreateComponent implements OnInit {
   recipeForm: FormGroup;
+  formSuccess : Subscription;
   servingsNumbers: number[];
   ingredientsArray: string[];
   directionsArray: IDirection[];
 
   @ViewChild('ingredient') ingredientRef: ElementRef;
   @ViewChild('direction') directionRef: ElementRef;
-  constructor(private formBuilder: FormBuilder, private recipeService: RecipesService) {}
+  constructor(private store: Store, 
+    private actions$: Actions,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private recipeService: RecipesService) {}
 
   
   ngOnInit() {
@@ -34,6 +47,15 @@ export class RecipeCreateComponent implements OnInit {
       ingredients: this.formBuilder.array([], Validators.required),
       directions: this.formBuilder.array([], Validators.required)
     })
+
+    this.formSuccess = this.actions$.pipe(
+      ofType(recipeActions.createRecipeSuccess)
+    )
+      .subscribe(() => {
+        this.router.navigate(["/"])
+        // this.recipeForm.reset();
+        // this.success.emit();
+      });
   }
 
   get ingredients(): FormArray{
@@ -74,11 +96,13 @@ export class RecipeCreateComponent implements OnInit {
 
   finalizeRecipe(){
     console.log(this.recipeForm.value);
-    this.recipeService.addNewRecipeToDB(Object.assign({}, this.recipeForm.value, {uuid: uuid.v4()})).subscribe(data => {
-      if(data){
-        this.recipeForm.reset();
-      }
-    })
+    // this.recipeService.addNewRecipeToDB(Object.assign({}, this.recipeForm.value, {uuid: uuid.v4()})).subscribe(data => {
+    //   if(data){
+    //     this.recipeForm.reset();
+    //   }
+    // })
+    let recipe: Recipe = Object.assign({}, this.recipeForm.value, {uuid: uuid.v4()})
+    this.store.dispatch(createRecipe({recipe}))
     
   }
 

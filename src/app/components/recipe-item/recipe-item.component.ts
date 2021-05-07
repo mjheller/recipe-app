@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import {Router} from '@angular/router';
-import { IRecipe } from 'src/app/models/recipe.interface';
+import { Store } from '@ngrx/store';
+import * as EventEmitter from 'events';
+import { Recipe } from 'src/app/models/recipe.interface';
+import { selectRecipe } from 'src/app/store/recipes/recipes.actions';
 import {apiURL} from '../../constants/constants';
 
 @Component({
@@ -9,10 +12,11 @@ import {apiURL} from '../../constants/constants';
   styleUrls: ['./recipe-item.component.css']
 })
 export class RecipeItemComponent implements OnInit {
-  @Input('recipe') recipe: IRecipe;
+  @Input('recipe') recipe: Recipe;
+
   imgUrl: string;
   
-  constructor(private router: Router) { }
+  constructor(private router: Router, private store: Store) { }
 
   ngOnInit() {
     if(this.recipe.images){
@@ -21,7 +25,6 @@ export class RecipeItemComponent implements OnInit {
     
   }
   openRecipeDetails(event, r){
-    //console.log(event, r)
     this.router.navigate(['/recipe-detail', r.uuid])
   }
 }
